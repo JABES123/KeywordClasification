@@ -1,0 +1,66 @@
+version: '3.4'
+
+services:
+
+  keywords-api:
+    container_name: keywords-api
+    build:
+      context: ./services/keywords-api
+      dockerfile: Dockerfile-dev
+    volumes:
+      - './services/keywords-api:/usr/src/app'
+    ports:
+      - 5001:5000
+    environment:
+      - FLASK_DEBUG=1
+      - APP_SETTINGS=project.config.DevelopmentConfig
+      - DATABASE_URL=postgresql://postgres:postgres@keywords-db:5432/graphite_db
+      - DATABASE_TEST_URL=postgresql://postgres:postgres@keywords-db:5432/users_test
+      - SECRET_KEY=my_precious
+    depends_on:
+      - keywords-db
+    links:
+      - keywords-db
+
+  keywords-db:
+    container_name: keywords-db
+    build:
+      context: ./services/keywords-db
+      dockerfile: Dockerfile
+    ports:
+      - 5436:5432
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+
+  keywords-ui:
+    container_name: keywords-ui
+    build:
+      context: ./services/keywords-ui
+      dockerfile: Dockerfile-dev
+    volumes:
+      - './services/keywords-ui:/usr/local/apache2/htdocs/'
+    ports:
+      - '1234:80'
+    environment:
+      - NODE_ENV=development
+      - REACT_APP_USERS_SERVICE_URL=${REACT_APP_USERS_SERVICE_URL}
+      - REACT_APP_API_GATEWAY_URL=${REACT_APP_API_GATEWAY_URL}
+      - REACT_APP_EXERCISES_SERVICE_URL=${REACT_APP_EXERCISES_SERVICE_URL}
+      - REACT_APP_SCORES_SERVICE_URL=${REACT_APP_SCORES_SERVICE_URL}
+      - CHOKIDAR_USEPOLLING=true
+    depends_on:
+      - keywords-api
+    links:
+      - keywords-api   
+
+
+ 
+
+  
+
+ 
+
+
+
+
