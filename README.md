@@ -15,11 +15,6 @@ The System must be capable to predict categories relative to the keywords given 
 
 
   
-2. Preprocessing and Model Training are in the etl repository that contain python files to do the text cleaning , text normalization like removing stopwords, expand contractions and text lenmatization.
-   1. First is needed create a new conda environment variable with python 3.8 as interpreter:  conda create -n ETL python==3.8 
-   2. Install requirements: pip install -r requirements.txt located in the repository.
-   3. Execute : "python TextPreProcesor.py " to start preprocessing.
-   4. Execute : "python ModelTrainer.py" to start training optimized only for cpu.
-   5. To train with GPU optimized is needed to run ModelTrainer.py inside of gpu-trainer folder.
+
 
 
