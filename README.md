@@ -1,4 +1,4 @@
-# GraphiteKeywordPrediction
+# KeywordPrediction
 The System must be capable to predict categories relative to the keywords given by the end-user.
 
 
