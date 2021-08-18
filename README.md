@@ -22,15 +22,4 @@ The System must be capable to predict categories relative to the keywords given 
    4. Execute : "python ModelTrainer.py" to start training optimized only for cpu.
    5. To train with GPU optimized is needed to run ModelTrainer.py inside of gpu-trainer folder.
 
-3. Test separately if some problem with DOCKER CONTAINERS
-   1. Runing API
-        1. Download the KeywordPredictionAPI folder
-        2. Create new conda environment "conda create -n api python==3.8" 
-        3. Inside of environment Install requirements.txt : pip install -r requirements.txt
-        4.  Create postgres database called "graphite_db" if you don´t have postgrest db you can use docker image with postgresql or change the conexion line in order to mapping     
-        5.  Inside of KeywordPredictionAPI folder execute : "python manage.py recreate-db" in order sqlalchemy the database schema. 
-        6.  Inside of KeywordPredictionAPI folder execute : "python manage.py seed-db" in order to make a row insertion statically to test conexion.  
-        7.  Http request with CURL: curl -X POST "http://localhost:5001/keyword/predict" -H "accept: */*" -H "Content-Type: application/json" -d "{\"keyword\":\"resident resume\"}"
-   
-
 
