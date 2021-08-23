@@ -13,7 +13,6 @@ The System must be capable to predict categories relative to the keywords given 
          2. Seed database executing: "docker-compose -f docker-compose-dev.yml   run keywords-api python manage.py seed-db"
          3. Acces to the user interface and you must see a one register in the list history of predictions: "http://0.0.0.0:1234/index.html"
 
-2. Model components
 
   
 
